@@ -1,8 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import SearchBar from "./components/SearchBar.vue";
+</script>
 
 <template>
   <div class="testing">
-    <h1>testing</h1>
+    <SearchBar />
   </div>
 </template>
 
