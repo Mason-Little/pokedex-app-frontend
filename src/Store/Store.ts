@@ -1,9 +1,7 @@
 import { ref } from "vue";
 
-const searchValue = ref("");
-
 const store = {
-  SearchValue: searchValue,
+  searchValue: ref(""),
 };
 
 export const useStore = () => store;

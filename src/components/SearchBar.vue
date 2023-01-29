@@ -1,6 +1,6 @@
 <template>
   <div class="search-div">
-    <input type="text" class="search-input" v-model="SearchValue" />
+    <input type="text" class="search-input" v-model="searchValue" />
     <button class="search-button" @click="searchHandler">search</button>
   </div>
 </template>
@@ -8,52 +8,52 @@
 <script setup>
 import { useStore } from "/src/Store/Store";
 
-const { SearchValue } = useStore();
+const { searchValue } = useStore();
 
 const searchHandler = () => {
-  console.log(SearchValue.value);
+  console.log(searchValue.value);
 };
 </script>
 <style scoped>
 .search-div {
   display: flex;
   align-items: center;
-  width: 80%; /* adjust as desired */
-  margin: 0 auto; /* centers horizontally */
-  border-radius: 25px; /* adds rounded edges */
-  background-color: #f2f2f2; /* sets background color */
-  padding: 10px; /* adds padding */
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 25px;
+  background-color: #f2f2f2;
+  padding: 10px;
 }
 
 .search-input::placeholder {
-  color: black; /* sets placeholder text color */
+  color: black;
 }
 
 .search-input {
-  background-color: transparent; /* removes background color */
-  border: none; /* removes border */
-  padding: 10px; /* adds padding */
-  font-size: 18px; /* sets font size */
-  flex: 1; /* allows input to take up remaining space */
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  flex: 1;
 }
 
 .search-input:focus {
-  outline: none; /* removes the black border */
-  background-color: #f2f2f2; /* sets background color */
-  border: 1px solid #f2f2f2; /* sets border color */
+  outline: none;
+  background-color: #f2f2f2;
+  border: 1px solid #f2f2f2;
 }
 
 .search-button {
-  background-color: #4caf50; /* sets background color */
-  color: white; /* sets text color */
-  padding: 10px 20px; /* adds padding */
-  border: none; /* removes border */
-  cursor: pointer; /* changes cursor on hover */
-  font-size: 18px; /* sets font size */
-  border-radius: 25px; /* adds rounded edges */
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 25px;
 }
 
 .search-button:hover {
-  background-color: #3e8e41; /* changes background color on hover */
+  background-color: #3e8e41;
 }
 </style>
