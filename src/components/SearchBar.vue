@@ -8,10 +8,10 @@
 <script setup>
 import { useStore } from "/src/Store/Store";
 
-const { searchValue } = useStore();
+const { searchValue, searchButtonPressedValue } = useStore();
 
 const searchHandler = () => {
-  console.log(searchValue.value);
+  searchButtonPressedValue.value = searchValue.value;
 };
 </script>
 <style scoped>
