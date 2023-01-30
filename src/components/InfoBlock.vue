@@ -1,5 +1,5 @@
 <template>
-  <div class="pokemon-card margin-top">
+  <div class="pokemon-card mt50">
     <img class="pokemon-image" src="" alt="Pokemon Image" />
     <h2 class="pokemon-name">Place Holder</h2>
     <ul>
@@ -24,11 +24,11 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px #ccc;
-  font-family: "Poppins", sans-serif; /* Adding font-family */
+  font-family: "Poppins", sans-serif;
 }
 
 .pokemon-name {
-  font-size: 2.5rem; /* Increasing font-size */
+  font-size: 2.5rem;
   font-weight: 600;
   color: #000;
   text-align: center;
@@ -39,18 +39,17 @@ img {
   width: 200px;
   height: 200px;
   object-fit: cover;
-  margin: 0 auto; /* center align the image */
-}
+  margin: 0 auto;
 
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
   text-align: center;
-  font-size: 1.2rem; /* Increasing font-size */
+  font-size: 1.2rem;
 }
 
-.margin-top {
+.mt50 {
   margin-top: 50px;
 }
 </style>
