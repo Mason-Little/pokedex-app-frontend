@@ -1,6 +1,11 @@
 <template>
   <div class="search-div">
-    <input type="text" class="search-input" v-model="searchValue" />
+    <input
+      type="text"
+      class="search-input"
+      v-model="searchBarState.searchValue"
+      @keyup.enter="searchHandler"
+    />
     <button class="search-button" @click="searchHandler">search</button>
   </div>
 </template>
@@ -8,11 +13,13 @@
 <script setup>
 import { useStore } from "/src/Store/Store";
 
-const { searchValue, searchedPokemon } = useStore();
+const { resetStore } = useStore();
+const { searchBarState } = useStore();
 
 const searchHandler = () => {
-  searchedPokemon.value = searchValue.value;
-  console.log(searchedPokemon.value);
+  searchBarState.searchedPokemon = searchBarState.searchValue;
+  console.log(searchBarState.searchedPokemon);
+  resetStore();
 };
 </script>
 <style scoped>
