@@ -1,18 +1,25 @@
 <template>
   <div class="search-div">
-    <input type="text" class="search-input" v-model="searchValue" />
-    <button class="search-button" @click="searchHandler">search</button>
+    <input
+      :value="state.searchTerm"
+      type="text"
+      class="search-input"
+      @input="setSearchTerm($event.target.value)"
+      @keyup.enter="setSearchedPokemon"
+    />
+    <button class="search-button" @click="setSearchedPokemon">search</button>
   </div>
 </template>
 
 <script setup>
-import { useStore } from "/src/Store/Store";
+import { useSearchBarStore } from "@/store/searchHandlerStore";
 
-const { searchValue, searchButtonPressedValue } = useStore();
+const { state, setSearchTerm, setSearchedPokemon } = useSearchBarStore();
+console.log(state.searchedPokemon);
 
-const searchHandler = () => {
-  searchButtonPressedValue.value = searchValue.value;
-};
+setSearchedPokemon();
+console.log(state.searchedPokemon);
+console.log(state.searchTerm);
 </script>
 <style scoped>
 .search-div {
