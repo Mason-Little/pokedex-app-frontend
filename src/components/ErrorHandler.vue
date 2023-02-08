@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStore } from "@/Store/Store";
+import { useStore } from "@/store/store";
 const { failedToFetch } = useStore();
 
 const closeError = () => {
