@@ -19,6 +19,7 @@ const historyHandlerState = reactive(createDefaultHistoryHandlerState());
 const store = {
   pokemonData,
   historyHandlerState,
+ master
   failedToFetch: ref(false),
   pokemonImageUrl: ref(
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
