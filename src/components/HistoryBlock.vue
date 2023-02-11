@@ -3,11 +3,11 @@ import { useStore } from "@/store/store";
 import { useSearchBarStore } from "@/store/searchHandlerStore";
 
 const { historyHandlerState } = useStore();
-const { setHistoryPokemon } = useSearchBarStore();
+const { setClickedPokemon } = useSearchBarStore();
 
 const historyActivated = (clicked) => {
   console.log(clicked);
-  setHistoryPokemon(clicked);
+  setClickedPokemon(clicked);
 };
 </script>
 
