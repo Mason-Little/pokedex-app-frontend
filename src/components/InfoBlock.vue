@@ -156,7 +156,11 @@ watch(
 
 <template>
   <div class="info-card mt50">
-    <img class="pokemon-image" :src="pokemonImageUrl" alt="Pokemon Image" />
+    <img
+      class="pokemon-image"
+      :src="pokemonImageUrl"
+      alt="Couldn't Load Image, API Doesn't have Image"
+    />
     <h2 class="pokemon-text">{{ pokemonData.pokemonName }}</h2>
     <ul>
       <li>
@@ -266,4 +270,62 @@ watch(
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 20px 5%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  font-family: "Poppins", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pokemon-text {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.pokemon-image {
+  width: 300px;
+  height: 300px;
+  object-fit: fill;
+  margin: 0 auto;
+}
+
+.info-card ul {
+  list-style: none;
+  margin: 10px;
+  padding: 0;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.info-card li {
+  margin: 10px;
+}
+
+.mt50 {
+  margin-top: 50px;
+}
+
+.moves-container,
+.ability-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.move,
+.ability-container div {
+  display: inline-block;
+  margin-right: 10px;
+}
+</style>
