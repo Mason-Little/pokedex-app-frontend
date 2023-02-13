@@ -15,16 +15,16 @@ const setSearchedPokemon = () => {
   state.searchTerm = "";
 };
 
-const setClickedPokemon = (value: any) => {
-  console.log(value);
+const setClickedPokemon = (value: string) => {
   state.searchedPokemon = value;
+  state.searchTerm = "";
 };
 
 const store = {
   state: readonly(state),
   setSearchTerm,
   setSearchedPokemon,
-  setHistoryPokemon: setClickedPokemon,
+  setClickedPokemon,
 };
 
 export const useSearchBarStore = () => store;
