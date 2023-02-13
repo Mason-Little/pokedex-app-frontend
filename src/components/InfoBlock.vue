@@ -49,7 +49,10 @@ async function fetchPokemon() {
     pokemonData.pokemonJsonData = await response.json();
     console.log(pokemonData.pokemonJsonData);
     failedToFetch.value = false;
-    if (!historyHandlerState.historyNames.includes(state.searchedPokemon)) {
+    if (
+      !historyHandlerState.historyNames.includes(state.searchedPokemon) &&
+      state.searchedPokemon.trim() !== ""
+    ) {
       historyHandlerState.historyNames.push(state.searchedPokemon);
     }
   } catch (error) {
