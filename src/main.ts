@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import "@/CSS/global.css";
-import "@/CSS/svgStyles.css";
+import "@/css/global.css";
+import "@/css/svgStyles.css";
 
 const app = createApp(App);
 
