@@ -21,6 +21,18 @@ const getHistoryFromDB = async () => {
     const url = "http://127.0.0.1:5000/return_history";
     const { data } = await useFetch(url).post(formData).json();
     console.log(data.value[0].history);
+    const databaseHistory = data.value[0].history;
+    console.log(typeof databaseHistory);
+    databaseHistory.forEach((something) => {
+      if (!historyHandlerState.historyNames.includes(something)) {
+        historyHandlerState.historyNames.push(something);
+      }
+    });
+  } else {
+    const url = "http://127.0.0.1:5000/add_user_info";
+    const { data } = await useFetch(url).get();
+    console.log(data.value);
+    localStorage.setItem("id", data.value);
   }
 };
 
