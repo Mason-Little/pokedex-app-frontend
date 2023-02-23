@@ -3,6 +3,7 @@ import SearchBar from "@/components/SearchBar.vue";
 import ErrorHandler from "@/components/ErrorHandler.vue";
 import InfoBlock from "@/components/InfoBlock.vue";
 import HistoryBlock from "@/components/HistoryBlock.vue";
+import { useFetch } from "@vueuse/core";
 
 import { useStore } from "@/store/store";
 const { historyHandlerState } = useStore();
@@ -11,6 +12,19 @@ const showHistory = () => {
   historyHandlerState.historyShowing = !historyHandlerState.historyShowing;
   console.log(historyHandlerState.historyShowing);
 };
+
+const getHistoryFromDB = async () => {
+  if (localStorage.length > 1) {
+    const uuid = localStorage.getItem("id") ?? "";
+    const formData = new FormData();
+    formData.append("uuid", uuid);
+    const url = "http://127.0.0.1:5000/return_history";
+    const { data } = await useFetch(url).post(formData).json();
+    console.log(data.value[0].history);
+  }
+};
+
+getHistoryFromDB();
 </script>
 
 <template>
