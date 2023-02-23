@@ -37,6 +37,15 @@ const getHistoryFromDB = async () => {
 };
 
 getHistoryFromDB();
+
+window.addEventListener("beforeunload", () => {
+  const uuid = localStorage.getItem("id") ?? "";
+  const formData = new FormData();
+  formData.append("uuid", uuid);
+  formData.append("history", historyHandlerState.historyNames);
+  const url = "http://127.0.0.1:5000/update_history";
+  useFetch(url).post(formData);
+});
 </script>
 
 <template>
