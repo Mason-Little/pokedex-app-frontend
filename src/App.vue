@@ -18,7 +18,8 @@ const getHistoryFromDB = async () => {
     const uuid = localStorage.getItem("id") ?? "";
     const formData = new FormData();
     formData.append("uuid", uuid);
-    const url = "https://pokedex-app-backend-production.up.railway.app/";
+    const url =
+      "https://pokedex-app-backend-production.up.railway.app/return_history";
     const { data } = await useFetch(url).post(formData).json();
     console.log(data.value[0].history);
     const databaseHistory = data.value[0].history;
