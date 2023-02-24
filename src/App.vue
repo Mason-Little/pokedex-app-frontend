@@ -18,7 +18,7 @@ const getHistoryFromDB = async () => {
     const uuid = localStorage.getItem("id") ?? "";
     const formData = new FormData();
     formData.append("uuid", uuid);
-    const url = "http://127.0.0.1:5000/return_history";
+    const url = "https://pokedex-app-backend-production.up.railway.app/";
     const { data } = await useFetch(url).post(formData).json();
     console.log(data.value[0].history);
     const databaseHistory = data.value[0].history;
@@ -29,7 +29,8 @@ const getHistoryFromDB = async () => {
       }
     });
   } else {
-    const url = "http://127.0.0.1:5000/add_user_info";
+    const url =
+      "https://pokedex-app-backend-production.up.railway.app/add_user_info";
     const { data } = await useFetch(url).get();
     console.log(data.value);
     localStorage.setItem("id", data.value);
@@ -43,7 +44,8 @@ window.addEventListener("beforeunload", () => {
   const formData = new FormData();
   formData.append("uuid", uuid);
   formData.append("history", historyHandlerState.historyNames);
-  const url = "http://127.0.0.1:5000/update_history";
+  const url =
+    "https://pokedex-app-backend-production.up.railway.app/update_history";
   useFetch(url).post(formData);
 });
 </script>
