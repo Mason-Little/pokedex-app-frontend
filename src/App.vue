@@ -21,6 +21,7 @@ const getHistoryFromDB = async () => {
     const url =
       "https://pokedex-app-backend-production.up.railway.app/return_history";
     const { data } = await useFetch(url).post(formData).json();
+    console.log(data.value);
     console.log(data.value[0].history);
     const databaseHistory = data.value[0].history;
     console.log(typeof databaseHistory);
