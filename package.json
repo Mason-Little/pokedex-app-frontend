@@ -3,14 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "start": "npx http-server ./dist",
     "dev": "vite",
-    "build": "run-p type-check build-only",
+    "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@vueuse/core": "^9.13.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {
