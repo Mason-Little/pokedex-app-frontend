@@ -4,6 +4,7 @@ import { useSearchBarStore } from "@/store/searchHandlerStore";
 import fileTypes from "/src/types";
 import { computed, reactive, ref, watch } from "vue";
 import pokemonTactics from "@/store/pokemonTactics";
+import { useFetch } from "@vueuse/core";
 
 const { pokemonImageUrl, pokemonData, failedToFetch, historyHandlerState } =
   useStore();
@@ -59,7 +60,6 @@ async function fetchPokemon() {
     failedToFetch.value = true;
     return;
   }
-
   pokemonData.pokemonName = pokemonData.pokemonJsonData.name;
   pokemonData.pokemonName =
     pokemonData.pokemonName[0].toUpperCase() + pokemonData.pokemonName.slice(1);
@@ -147,12 +147,23 @@ async function fetchPokemon() {
   iconHandlerState.vulnerableTo = tempVulnerableTo;
 }
 
+async function updateHistory() {
+  const uuid = localStorage.getItem("id") ?? "";
+  const formData = new FormData();
+  formData.append("uuid", uuid);
+  formData.append("history", historyHandlerState.historyNames);
+  const url =
+    "https://pokedex-app-backend-production.up.railway.app/update_history";
+  useFetch(url).post(formData);
+}
+
 fetchPokemon();
 
 watch(
   () => state.searchedPokemon,
-  () => {
-    fetchPokemon();
+  async () => {
+    await fetchPokemon();
+    await updateHistory();
   }
 );
 </script>

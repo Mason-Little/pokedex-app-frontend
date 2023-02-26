@@ -4,7 +4,6 @@ import ErrorHandler from "@/components/ErrorHandler.vue";
 import InfoBlock from "@/components/InfoBlock.vue";
 import HistoryBlock from "@/components/HistoryBlock.vue";
 import { useFetch } from "@vueuse/core";
-
 import { useStore } from "@/store/store";
 const { historyHandlerState } = useStore();
 
@@ -25,11 +24,7 @@ const getHistoryFromDB = async () => {
     console.log(data.value[0].history);
     const databaseHistory = data.value[0].history;
     console.log(typeof databaseHistory);
-    databaseHistory.forEach((something) => {
-      if (!historyHandlerState.historyNames.includes(something)) {
-        historyHandlerState.historyNames.push(something);
-      }
-    });
+    historyHandlerState.historyNames = databaseHistory;
   } else {
     const url =
       "https://pokedex-app-backend-production.up.railway.app/add_user_info";
@@ -40,16 +35,6 @@ const getHistoryFromDB = async () => {
 };
 
 getHistoryFromDB();
-
-window.addEventListener("beforeunload", () => {
-  const uuid = localStorage.getItem("id") ?? "";
-  const formData = new FormData();
-  formData.append("uuid", uuid);
-  formData.append("history", historyHandlerState.historyNames);
-  const url =
-    "https://pokedex-app-backend-production.up.railway.app/update_history";
-  useFetch(url).post(formData);
-});
 </script>
 
 <template>
